@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-primary {
+  background-color: #F0F4FA !important;
+}
+
+.bg-secondary {
+  background-color: #F8FAFF !important;
+}
+
+.bg-info {
+  background-color: #EAF2FE !important;
+}
+
+.searchChats input::placeholder {
+  color: #709CE6;
+}
+.text-primary{
+  color: #709CE6 !important;
+}
+.bg-light{
+  background-color: #FFFFFF !important;
+}
+.overflow-section {
+  max-height: 73.5vh; /* Set a fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
+.side-bar .active{
+  background-color: #5B96F7;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+}
