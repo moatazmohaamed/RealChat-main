@@ -16,6 +16,7 @@ import VerifyCode from './Components/Auth/VerifyCode';
 import UpdatePassword from './Components/Auth/UpdatePassword';
 import ProtectRoute from './Components/Auth/ProtectRoute';
 import NotFound from './Components/NotFound';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -50,7 +51,7 @@ function App() {
 
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
-
+      <ToastContainer />
     </>
   )
 }
