@@ -3,10 +3,12 @@ import CircleDash from "../img/ph--circle-dashed.svg"
 import ArchiveBox from "../img/material-symbols--archive-outline.svg"
 import Pink from "../img/Ellipse 1131.png"
 import DogHat from "../img/Ellipse 1133.png"
-function Chats() {
+
+
+function Chats({ onContactClick }) {
   return (
     <>
-      <div className="col-3 bg-secondary px-4 pt-4">
+      <div className="h-full w-full  bg-secondary px-4 pt-4">
         <div className="d-flex justify-content-between align-items-center">
           <h1>Chats</h1>
           <Link>
@@ -14,7 +16,7 @@ function Chats() {
           </Link>
         </div>
         <div className="searchChats d-flex justify-content-center align-items-center pt-2 pb-2">
-          <input type="text" className="form-control bg-info bg-light border-0 rounded-4 py-2 px-5 fs-4 mx-1" placeholder="Search" />
+          <input type="text" className="form-control bg-info bg-light  rounded-4 py-2 px-5 fs-4 mx-1" placeholder="Search" />
         </div>
         <div className="overflow-section d-flex flex-column py-2 px-2">
           <Link className="d-flex justify-content-start align-items-center gap-3 pt-1 pb-3 border-bottom text-decoration-none">
@@ -24,7 +26,7 @@ function Chats() {
           <div className="py-3">
             <h5>Pinned</h5>
             <div className="d-flex flex-column gap-2 mt-3">
-              <NavLink className="text-decoration-none">
+              <NavLink className="text-decoration-none" onClick={onContactClick}>
                 <div className='d-flex flex-row align-items-center justify-content-between bg-light rounded-4 py-3 px-3'>
                   <div className='d-flex flex-column'>
                     <div className='d-flex justify-content-between align-items-center gap-3'>
@@ -43,7 +45,7 @@ function Chats() {
                   </div>
                 </div>
               </NavLink>
-              <NavLink className="text-decoration-none">
+              <NavLink className="text-decoration-none" onClick={onContactClick}>
                 <div className='d-flex flex-row align-items-center justify-content-between bg-light rounded-4 py-3 px-3'>
                   <div className='d-flex flex-column'>
                     <div className='d-flex justify-content-between align-items-center gap-3'>
@@ -52,7 +54,7 @@ function Chats() {
                       </div>
                       <div className="">
                         <h6 className="text-muted">Dog Hat</h6>
-                        <p className="text-muted mb-0"> It’s so quite outside 🧐</p>
+                        <p className="text-muted mb-0"> It's so quite outside 🧐</p>
                       </div>
                     </div>
                   </div>
@@ -67,7 +69,7 @@ function Chats() {
           <div className="py-3">
             <h5>All Chats</h5>
             <div className="d-flex flex-column gap-2 mt-3">
-              <NavLink className="text-decoration-none">
+              <NavLink className="text-decoration-none" onClick={onContactClick}>
                 <div className='d-flex flex-row align-items-center justify-content-between bg-light rounded-4 py-3 px-3'>
                   <div className='d-flex flex-column'>
                     <div className='d-flex justify-content-between align-items-center gap-3'>
@@ -86,7 +88,7 @@ function Chats() {
                   </div>
                 </div>
               </NavLink>
-              <NavLink className="text-decoration-none">
+              <NavLink className="text-decoration-none" onClick={onContactClick}>
                 <div className='d-flex flex-row align-items-center justify-content-between bg-light rounded-4 py-3 px-3'>
                   <div className='d-flex flex-column'>
                     <div className='d-flex justify-content-between align-items-center gap-3'>
@@ -95,7 +97,7 @@ function Chats() {
                       </div>
                       <div className="">
                         <h6 className="text-muted">Dog Hat</h6>
-                        <p className="text-muted mb-0"> It’s so quite outside 🧐</p>
+                        <p className="text-muted mb-0"> It's so quite outside 🧐</p>
                       </div>
                     </div>
                   </div>

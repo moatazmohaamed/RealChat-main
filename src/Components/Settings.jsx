@@ -1,9 +1,16 @@
 import { Link } from 'react-router-dom';
 import SettingsImg from "../img/Ellipse 1147.png"
+import { IoIosLogOut } from "react-icons/io";
+
+const logOut = () => {
+    localStorage.removeItem('token')
+}
+
+
 function Settings() {
     return (
         <>
-            <div className="col-3 bg-secondary px-4 pt-4">
+            <div className="bg-secondary px-4 pt-4 h-full md:w-xl">
                 <div className="d-flex justify-content-start align-items-center gap-4">
                     <Link to="/"><svg xmlns="http://www.w3.org/2000/svg" className="d-inline" width="40" height="40" viewBox="0 0 12 24"><path fill="#4B4B4B" fill-rule="evenodd" d="m3.343 12l7.071 7.071L9 20.485l-7.778-7.778a1 1 0 0 1 0-1.414L9 3.515l1.414 1.414z" /></svg></Link>
                     <h1>Settings</h1>
@@ -21,7 +28,7 @@ function Settings() {
                         <p className='m-0 text-muted fw-semibold'>Notifications</p>
                     </Link>
                     <Link className='d-flex justify-content-start align-items-center gap-4 text-decoration-none border-bottom py-3'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256"><path fill="#727375" d="M200.12 55.87A102 102 0 1 0 55.88 200.12A102 102 0 1 0 200.12 55.87M106 134h44l14.1 30.56A30 30 0 0 0 128 174a30 30 0 0 0-36.11-9.46Zm5.54-12L128 86.32L144.47 122ZM134 192a18 18 0 0 1 36 0v15.64a89.3 89.3 0 0 1-36 10.14Zm-48 0a18 18 0 0 1 36 0v25.78a89.3 89.3 0 0 1-36-10.14Zm105.64-.36A93 93 0 0 1 182 200v-24a6 6 0 0 0-.55-2.51l-48-104a6 6 0 0 0-10.9 0l-48 104A6 6 0 0 0 74 176v24a93 93 0 0 1-9.64-8.37a90 90 0 1 1 127.28 0Z" stroke-width="6" stroke="#727375"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256"><path fill="#727375" d="M200.12 55.87A102 102 0 1 0 55.88 200.12A102 102 0 1 0 200.12 55.87M106 134h44l14.1 30.56A30 30 0 0 0 128 174a30 30 0 0 0-36.11-9.46Zm5.54-12L128 86.32L144.47 122ZM134 192a18 18 0 0 1 36 0v15.64a89.3 89.3 0 0 1-36 10.14Zm-48 0a18 18 0 0 1 36 0v25.78a89.3 89.3 0 0 1-36-10.14Zm105.64-.36A93 93 0 0 1 182 200v-24a6 6 0 0 0-.55-2.51l-48-104a6 6 0 0 0-10.9 0l-48 104A6 6 0 0 0 74 176v24a93 93 0 0 1-9.64-8.37a90 90 0 1 1 127.28 0Z" stroke-width="6" stroke="#727375" /></svg>
                         <p className='m-0 text-muted fw-semibold'>Theme</p>
                     </Link>
                     <Link className='d-flex justify-content-start align-items-center gap-4 text-decoration-none border-bottom py-3'>
@@ -33,9 +40,13 @@ function Settings() {
                         <p className='m-0 text-muted fw-semibold'>Security</p>
                     </Link>
                     <Link className='d-flex justify-content-start align-items-center gap-4 text-decoration-none border-bottom py-3'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="#727375" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 2a8 8 0 1 0 0 16a8 8 0 0 0 0-16m0 11a1 1 0 1 1 0 2a1 1 0 0 1 0-2m0-9a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V7a1 1 0 0 1 1-1"/></g></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" /><path fill="#727375" d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 2a8 8 0 1 0 0 16a8 8 0 0 0 0-16m0 11a1 1 0 1 1 0 2a1 1 0 0 1 0-2m0-9a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V7a1 1 0 0 1 1-1" /></g></svg>
                         <p className='m-0 text-muted fw-semibold'>Help</p>
                     </Link>
+
+                    <button onClick={() => logOut()} className="rounded-lg md:hidden bg-blue-400 py-1 px-2 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2 flex items-center" type="button">
+                        Log out <IoIosLogOut />
+                    </button>
                 </div>
             </div>
         </>

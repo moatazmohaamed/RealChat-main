@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Dashboard from './Layouts/Dashboard';
 import ChatsLayout from './Layouts/ChatsLayout';
 import InitialPage from './Components/InitialPage';
@@ -17,11 +17,28 @@ import UpdatePassword from './Components/Auth/UpdatePassword';
 import ProtectRoute from './Components/Auth/ProtectRoute';
 import NotFound from './Components/NotFound';
 import { ToastContainer } from 'react-toastify';
-
+import { useEffect } from 'react';
 
 
 function App() {
+  const location = useLocation();
 
+  useEffect(() => {
+    // Map pathnames to titles
+    const titles = {
+      '/': 'Chats',
+      '/groups': 'Groups',
+      '/calls': 'Calls',
+      '/settings': 'Settings',
+      '/profile': 'Profile',
+      '/signin': 'Sign In',
+      '/signup': 'Sign Up',
+      '/forgetpassword': 'Forget Password',
+      '/updatepassword': 'Update Password',
+      '/verifycode': 'Verify Code',
+    };
+    document.title = titles[location.pathname] || 'RealChat';
+  }, [location.pathname]);
 
   return (
     <>

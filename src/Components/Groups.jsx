@@ -1,10 +1,10 @@
 import { Link, NavLink } from "react-router-dom"
 import Pink from "../img/Ellipse 1131.png"
 import DogHat from "../img/Ellipse 1133.png"
-function Groups() {
+function Groups({ onContactClick }) {
   return (
     <>
-      <div className="col-3 bg-secondary px-4 pt-4">
+      <div className="bg-secondary px-4 pt-4 h-full">
         <div className="d-flex justify-content-between align-items-center">
           <h1>Groups</h1>
         </div>
@@ -14,12 +14,12 @@ function Groups() {
         <div className="overflow-section d-flex flex-column py-2 px-2">
           <Link className="d-flex justify-content-between align-items-center gap-3 pt-1 pb-3 border-bottom text-decoration-none">
             <h5 className="text-primary mb-0 fw-semibold">Create New Group</h5>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#709CE6" d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#709CE6" d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2" /></svg>
           </Link>
           <div className="py-3">
             <h5>Pinned</h5>
             <div className="d-flex flex-column gap-2 mt-3">
-              <NavLink className="text-decoration-none">
+              <NavLink className="text-decoration-none" onClick={onContactClick}>
                 <div className='d-flex flex-row align-items-center justify-content-between bg-light rounded-4 py-3 px-3'>
                   <div className='d-flex flex-column'>
                     <div className='d-flex justify-content-between align-items-center gap-3'>
@@ -38,7 +38,7 @@ function Groups() {
                   </div>
                 </div>
               </NavLink>
-              <NavLink className="text-decoration-none">
+              <NavLink className="text-decoration-none" onClick={onContactClick}>
                 <div className='d-flex flex-row align-items-center justify-content-between bg-light rounded-4 py-3 px-3'>
                   <div className='d-flex flex-column'>
                     <div className='d-flex justify-content-between align-items-center gap-3'>
@@ -47,7 +47,7 @@ function Groups() {
                       </div>
                       <div className="">
                         <h6 className="text-muted">Dog Hat</h6>
-                        <p className="text-muted mb-0"> It’s so quite outside 🧐</p>
+                        <p className="text-muted mb-0"> It's so quite outside 🧐</p>
                       </div>
                     </div>
                   </div>
@@ -62,7 +62,7 @@ function Groups() {
           <div className="py-3">
             <h5>All Chats</h5>
             <div className="d-flex flex-column gap-2 mt-3">
-              <NavLink className="text-decoration-none">
+              <NavLink className="text-decoration-none" onClick={onContactClick}>
                 <div className='d-flex flex-row align-items-center justify-content-between bg-light rounded-4 py-3 px-3'>
                   <div className='d-flex flex-column'>
                     <div className='d-flex justify-content-between align-items-center gap-3'>
@@ -81,7 +81,7 @@ function Groups() {
                   </div>
                 </div>
               </NavLink>
-              <NavLink className="text-decoration-none">
+              <NavLink className="text-decoration-none" onClick={onContactClick}>
                 <div className='d-flex flex-row align-items-center justify-content-between bg-light rounded-4 py-3 px-3'>
                   <div className='d-flex flex-column'>
                     <div className='d-flex justify-content-between align-items-center gap-3'>
@@ -90,7 +90,7 @@ function Groups() {
                       </div>
                       <div className="">
                         <h6 className="text-muted">Dog Hat</h6>
-                        <p className="text-muted mb-0"> It’s so quite outside 🧐</p>
+                        <p className="text-muted mb-0"> It's so quite outside 🧐</p>
                       </div>
                     </div>
                   </div>

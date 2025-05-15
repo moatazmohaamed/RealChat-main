@@ -5,7 +5,7 @@ function Dashboard() {
   return (
     <>
       <div className="container-fluid">
-        <div className="row vh-100">
+        <div className="h-full md:flex vh-100">
           <Sidebar />
           <Outlet />
         </div>

@@ -67,12 +67,10 @@ const SignIn = () => {
     return (
         <>
             <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-                <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
+                <div className="max-w-lg w-full bg-white rounded-xl shadow-lg p-8">
                     <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Sign In</h2>
 
                     <form className="space-y-4" onSubmit={formik.handleSubmit}>
-
-
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
@@ -109,10 +107,6 @@ const SignIn = () => {
                             {formik.errors.password}
                         </div> : ""}
 
-
-
-
-
                         <div className="flex items-center justify-between">
 
                             <NavLink to='/forgetpassword' className="text-sm text-indigo-600 hover:text-indigo-500">Forgot password?</NavLink>
@@ -123,7 +117,6 @@ const SignIn = () => {
                             {loading ? <FontAwesomeIcon icon={faSpinner} spin size="2x" color="white" /> : "Sign In"}
 
                         </button>
-
 
 
                         {message ? <div className="p-</button>4 mb-4 text-sm text-green-800 rounded-lg bg-green-50  dark:text-green-400" role="alert">

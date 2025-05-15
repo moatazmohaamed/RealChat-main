@@ -20,18 +20,25 @@
 .searchChats input::placeholder {
   color: #709CE6;
 }
-.text-primary{
+
+.text-primary {
   color: #709CE6 !important;
 }
-.bg-light{
+
+.bg-light {
   background-color: #FFFFFF !important;
 }
+
 .overflow-section {
-  max-height: 73.5vh; /* Set a fixed height */
-  overflow-y: auto; /* Enable vertical scrolling */
-  overflow-x: hidden; /* Hide horizontal overflow */
+  max-height: 73.5vh;
+  /* Set a fixed height */
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  overflow-x: hidden;
+  /* Hide horizontal overflow */
 }
-.side-bar .active{
+
+.side-bar .active {
   background-color: #5B96F7;
   padding: 0.7rem;
   border-radius: 0.5rem;
