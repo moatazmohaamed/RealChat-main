@@ -6,6 +6,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
+import { useBaseUrl } from '../../context/BaseUrlContext';
 
 
 const SignUp = () => {
@@ -13,23 +14,20 @@ const SignUp = () => {
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
     let navigate = useNavigate()
+    const baseUrl = useBaseUrl()
 
 
     let mySchema = Yup.object({
-        name: Yup.string().required("Name is required").min(3, "Name must be at least 3 characters").max(20, "Name must be at most 20 characters"),
+        username: Yup.string().required("Name is required").min(3, "Name must be at least 3 characters").max(20, "Name must be at most 20 characters"),
         email: Yup.string().email("Invalid email").required("Email is required"),
         password: Yup.string().required("Password is required").matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, "Password must be at least 8 characters long and contain at least one letter and one number"),
-        rePassword: Yup.string().required("RePassword is required").oneOf([Yup.ref('password'), null], "Passwords must match"),
-        phone: Yup.string().required("Phone is required").matches(/^(002)?01[0125][0-9]{8}$/, "Phone number must be valid and start with 010, 011, 012, or 015")
     })
 
     let formik = useFormik({
         initialValues: {
-            name: "",
+            username: "",
             email: "",
             password: "",
-            rePassword: "",
-            phone: ""
         },
         validationSchema: mySchema,
         onSubmit: (values) => {
@@ -39,11 +37,11 @@ const SignUp = () => {
 
     async function registerForm(values) {
         setLoading(true)
-        await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signup", values).then((res) => {
+        await axios.post(`${baseUrl}/api/auth/signup`, values).then((res) => {
             setMessage(res.data.message)
             setLoading(false)
             navigate("/signin")
-            toast(res.data.message, {
+            toast("Sign Up Successfully", {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -55,9 +53,9 @@ const SignUp = () => {
                 transition: Bounce,
             })
         }).catch((err) => {
-            setError(err.response.data.message)
+            setError('Sign Up Failed')
             setLoading(false)
-            toast(err.response.data.message, {
+            toast(err.response?.data?.message || 'Sign Up Failed', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -83,16 +81,16 @@ const SignUp = () => {
                             <input
                                 type="text"
                                 onChange={formik.handleChange}
-                                value={formik.values.name}
-                                id='name'
-                                name='name'
+                                value={formik.values.username}
+                                id='username'
+                                name='username'
                                 onBlur={formik.handleBlur}
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                                 placeholder="ex Moataz.."
                             />
                         </div>
-                        {formik.errors.name && formik.touched.name ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400" role="alert">
-                            {formik.errors.name}
+                        {formik.errors.username && formik.touched.username ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400" role="alert">
+                            {formik.errors.username}
                         </div> : ""}
 
 
@@ -131,40 +129,8 @@ const SignUp = () => {
                             {formik.errors.password}
                         </div> : ""}
 
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
-                            <input
-                                type="password"
-                                id="rePassword"
-                                name="rePassword"
-                                onChange={formik.handleChange}
-                                value={formik.values.rePassword}
-                                onBlur={formik.handleBlur}
 
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
-                                placeholder="••••••••"
-                            />
-                        </div>
-                        {formik.errors.rePassword && formik.touched.rePassword ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400" role="alert">
-                            {formik.errors.rePassword}
-                        </div> : ""}
 
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                onChange={formik.handleChange}
-                                value={formik.values.phone}
-                                onBlur={formik.handleBlur}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
-                                placeholder="01023456789"
-                            />
-                        </div>
-                        {formik.errors.phone && formik.touched.phone ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400" role="alert">
-                            {formik.errors.phone}
-                        </div> : ""}
 
                         <div className="flex items-center justify-between">
                             <label className="flex items-center">
@@ -182,7 +148,7 @@ const SignUp = () => {
 
 
 
-                        {message ? <div className="p-</button>4 mb-4 text-sm text-green-800 rounded-lg bg-green-50  dark:text-green-400" role="alert">
+                        {message ? <div className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50  dark:text-green-400" role="alert">
                             {message}
                         </div> : ""}
                         {error ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400" role="alert">

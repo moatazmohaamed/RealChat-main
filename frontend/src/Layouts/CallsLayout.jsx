@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Calls from './../Components/Calls';
 import { useState, useEffect } from 'react';
+import ChatHeader from '../Components/ChatHeader';
 
 function CallsLayout() {
   const [callOpen, setCallOpen] = useState(false);
@@ -23,6 +24,7 @@ function CallsLayout() {
         <Calls onContactClick={() => setCallOpen(true)} />
       </div>
       <div className="flex-1">
+        <ChatHeader />
         <Outlet />
       </div>
     </div>

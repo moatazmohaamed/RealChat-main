@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Groups from './../Components/Groups';
 import { useState, useEffect } from 'react';
+import ChatHeader from '../Components/ChatHeader';
 
 function GroupsLayout() {
   const [groupOpen, setGroupOpen] = useState(false);
@@ -23,6 +24,7 @@ function GroupsLayout() {
         <Groups onContactClick={() => setGroupOpen(true)} />
       </div>
       <div className="flex-1">
+        <ChatHeader />
         <Outlet />
       </div>
     </div>

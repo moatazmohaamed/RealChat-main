@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import SettingsImg from "../img/Ellipse 1147.png"
 import { IoIosLogOut } from "react-icons/io";
+import ChatHeader from '../Components/ChatHeader';
 
 const logOut = () => {
     localStorage.removeItem('token')
@@ -48,6 +49,7 @@ function Settings() {
                         Log out <IoIosLogOut />
                     </button>
                 </div>
+
             </div>
         </>
     )

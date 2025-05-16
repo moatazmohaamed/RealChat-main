@@ -6,12 +6,14 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Bounce, toast } from 'react-toastify'
-
+import { useBaseUrl } from '../../context/BaseUrlContext';
 const SignIn = () => {
     const [message, setMessage] = useState(null)
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
+    const baseUrl = useBaseUrl()
     let navigate = useNavigate()
+    const token = localStorage.getItem("token");
 
     let mySchema = Yup.object({
         email: Yup.string().email("Invalid email").required("Email is required"),
@@ -31,11 +33,18 @@ const SignIn = () => {
 
     async function login(values) {
         setLoading(true)
-        await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signin", values).then((res) => {
+        await axios.post(`${baseUrl}/api/auth/signin`, values, {
+            headers: {
+                Authorization: `${token}`,
+            },
+        }).then((res) => {
             setMessage(res.data.message)
             setLoading(false)
+            navigate("/")
             localStorage.setItem("token", res.data.token)
-            toast(res.data.message, {
+            localStorage.setItem("userId", res.data._id)
+            localStorage.setItem("receiverId", res.data._id)
+            toast("Sign In Successfully", {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -46,11 +55,10 @@ const SignIn = () => {
                 theme: "dark",
                 transition: Bounce,
             })
-            navigate("/")
         }).catch((err) => {
-            setError(err.response.data.message)
+            setError('Sign In Failed')
             setLoading(false)
-            toast(err.response.data.message, {
+            toast(err.response?.data?.message || 'Sign In Failed', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -119,7 +127,7 @@ const SignIn = () => {
                         </button>
 
 
-                        {message ? <div className="p-</button>4 mb-4 text-sm text-green-800 rounded-lg bg-green-50  dark:text-green-400" role="alert">
+                        {message ? <div className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50  dark:text-green-400" role="alert">
                             {message}
                         </div> : ""}
                         {error ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50  dark:text-red-400" role="alert">
